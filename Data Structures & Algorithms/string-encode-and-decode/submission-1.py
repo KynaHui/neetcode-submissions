@@ -1,0 +1,23 @@
+class Solution:
+
+    def encode(self, strs: List[str]) -> str:
+        results = ""
+        for s in strs:
+            results += str(len(s)) + "#" + s
+        return results
+
+    def decode(self, s: str) -> List[str]:
+        # i: pointer, position of input string 
+        results, i = [], 0
+
+        while i < len(s):
+            j = i
+            while s[j] != "#":
+                j += 1
+            # not including s[j]
+            length = int(s[i:j])
+            results.append(s[j + 1: j + 1 + length])
+            # beginning of the next word
+            i = j + 1 + length 
+
+        return results 
