@@ -1,0 +1,15 @@
+# time: O(n), space: O(1)
+class Solution:
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        l, r = 0, len(numbers) - 1
+        while l < r: 
+            current_sum = numbers[l] + numbers[r] 
+            if current_sum == target:
+                return [l+1, r+1]
+            elif current_sum > target:
+                r -= 1
+            elif current_sum < target:
+                l += 1
+        return []
+        
+# not l += 1 and r -= 1 at the same time.
